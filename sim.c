@@ -1,29 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-
-#define MAX_PAGINAS 1048576  // 32 bits
-
-typedef struct {
-    int marco;                  // Numero de marco.
-    bool valido;                // Bit de validacion.
-    bool bitReferencia;         // Bit de referencia para el algoritmo Reloj.
-} EntradaTP;                    // Struct del Tamaño de Pagina.
-
-typedef struct Simulador{
-    EntradaTP *tablaPaginas;    // Tabla de paginas.
-    int nPaginas;           
-    bool *marcoOcupados;        // bool que indica si el marco esta ocupado.     
-    int nMarcos;                // numero total de marcos.
-    int tMarco;                 // Tamaño del marco.
-    int b;                      // Bits de desplazamiento.
-    unsigned int mask;          // Mascara para offset.
-    int punteroReloj;           // Puntero para el algoritmo de reloj.
-    int fallos;         
-    int referenciasTotales;   
-    bool verbose;              
-} Simulador;                    // Struct del simulador.
+#include "sim.h"
 
 int calcularLog2(int n) {
     int log = 0;
@@ -34,13 +9,13 @@ int calcularLog2(int n) {
     return log;
 }
 
-Simulador* iniciarSim(int nMarcos, int tMarco, bool verbose) {
+Simulador* iniciarSim(int nMarcosE, int tMarcoE, bool verboseE) { // Entradas definidas como ..E para evitar confusiones.
     Simulador *sim = (Simulador*)malloc(sizeof(Simulador));
-    sim -> nMarcos = nMarcos;
-    sim -> tMarco = tMarco;
-    sim -> b = calcularLog2(tMarco);
+    sim -> nMarcos = nMarcosE;
+    sim -> tMarco = tMarcoE;
+    sim -> b = calcularLog2(tMarcoE);
     sim -> mask = (1 << sim->b) - 1;  // Mascara = 2^b - 1
-    sim -> verbose = verbose;
+    sim -> verbose = verboseE;
     sim -> punteroReloj = 0;
     sim -> fallos = 0;
     sim -> referenciasTotales = 0;
@@ -51,11 +26,11 @@ Simulador* iniciarSim(int nMarcos, int tMarco, bool verbose) {
         sim -> tablaPaginas[i].valido = false;
         sim -> tablaPaginas[i].bitReferencia = false;
     }
-    sim -> marcoOcupados = (bool*)calloc(nMarcos, sizeof(bool)); // Marcos.
+    sim -> marcoOcupados = (bool*)calloc(nMarcosE, sizeof(bool)); // Marcos.
     return sim;
 }
 
-// Descomponer dirección virtual en npv y offset según especificación
+// Descomponer direccion virtual en npv y offset segun la especificacion entregada.
 void dirVirtual(Simulador *sim, unsigned int dv, unsigned int *npv, unsigned int *offset) {
     *offset = dv & sim -> mask;      // offset = DV & MASK (sacada del enunciado).
     *npv = dv >> sim -> b;           // npv = DV >> b (sacada del enunciado).
