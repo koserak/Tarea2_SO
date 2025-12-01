@@ -3,7 +3,7 @@
 int calcularLog2(int n) {
     int log = 0;
     while (n > 1) {
-        n >>= 1;
+        n / 2;
         log++;
     }
     return log;
