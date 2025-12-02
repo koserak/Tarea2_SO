@@ -9,7 +9,7 @@ typedef struct {
     int marco;                  // Numero de marco.
     bool valido;                // Bit de validacion.
     bool bitReferencia;         // Bit de referencia para el algoritmo Reloj.
-} EntradaTP;                    // Struct del Tamaño de Pagina.
+} EntradaTP;                    // Struct de la Tabla de Paginas.
 
 typedef struct {
     EntradaTP *tablaPaginas;    // Tabla de paginas.
