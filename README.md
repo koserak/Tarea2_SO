@@ -3,10 +3,10 @@ Tarea 2 del ramo Sistemas Operativos
 
 ## Integrantes: 
 
-Ariel Fernandez
-Kurt Koserak
-Benjamin Lopez
-Sebastian Nova (ya lo completé bro)
+- Ariel Fernandez
+- Kurt Koserak
+- Benjamin Lopez
+- Sebastian Nova
 
 ### Uso del simulador:
 
