@@ -11,7 +11,7 @@ Tarea 2 del ramo Sistemas Operativos
 ### Uso de la implementación de la barrera
 Antes de usar se debe usar el siguiente comando:
 
-```gcc –Wall –pthread –o main main.c barrera.c```
+```gcc -Wall -pthread -o main main.c barrera.c```
 
 ### Uso del simulador:
 
