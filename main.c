@@ -7,19 +7,19 @@
 #define ETAPAS 4 // Veces que la barra se reutiliza
 
 typedef struct {
-    int id_hilo;
-    barrera_t *la_barrera;
+    int id_hilo; // Identificadornico thread (0,1,2,...).
+    barrera_t *la_barrera; // Puntero a la barrera reutilizable que todos los threads deben usar
 } args_hilo_t;
 
-void *trabajador(void *arg){
+void *trabajador(void *arg){ // Esta función es ejecutada por cada hilo creado en main().
     args_hilo_t *datos = (args_hilo_t*) arg;
     int id = datos->id_hilo;
     barrera_t *barrera = datos->la_barrera;
 
     for(int i = 0; i < ETAPAS; i++){ // cada thread pasa por la barrera ETAPAS veces
-        printf("Hilo %d: Llegué a la barrera en la etapa %d\n", id, i);
+        printf("Hilo %d: Llego a la barrera en la etapa %d\n", id, i);
         waitBarrera(barrera); // Esta barrera sincroniza los hilos, todos llegan aqui antes de seguir
-        printf("Hilo %d: Cruzó la barrera en la etapa %d\n", id, i);
+        printf("Hilo %d: Cruzo la barrera en la etapa %d\n", id, i);
     }
     return NULL;
 }
