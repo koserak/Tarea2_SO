@@ -11,7 +11,7 @@ typedef struct {
     bool bitReferencia;         // Bit de referencia para el algoritmo Reloj.
 } EntradaTP;                    // Struct del Tamaño de Pagina.
 
-typedef struct Simulador{
+typedef struct {
     EntradaTP *tablaPaginas;    // Tabla de paginas.
     int nPaginas;           
     bool *marcoOcupados;        // bool que indica si el marco esta ocupado.     
