@@ -6,7 +6,7 @@ Tarea 2 del ramo Sistemas Operativos
 Ariel Fernandez
 Kurt Koserak
 Benjamin Lopez
-Sebastian --- (Completalo Porfa hjsdhsdhs)
+Sebastian Nova (ya lo completé bro)
 
 ### Uso del simulador:
 
